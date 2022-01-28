@@ -28,8 +28,6 @@ for l,o in occurances.items():
         occurances[l] = o/total
     i+=1
 
-print(occurances)
-
 
 def optimised_guess(words):
 
@@ -56,19 +54,19 @@ def guess(green, yellow):  # guess when unique yellows + greens = 4 or something
 if __name__ == "__main__":
     done = False
     l = ""
-    guessed = ["-"," ","'","/"]
-    wordz = words
+    guessed = ["-"," ","'","/",'"']
+    wordz = list(filter(lambda s: all([c.lower() not in guessed for c in s]), words))
     while len(wordz) > 0:
 
-        wordz = list(filter(lambda s: all([c.lower() not in guessed for c in s]), words))
+        
         # filters words so that every letter in word not in a guessed letter
 
         w = optimised_guess(wordz)
-
-        print(w.index("Glare"))
-
+        print(w[:10])
         guessed += list(w[0])
 
-        print(w)
+        wordz = list(filter(lambda s: all([c.lower() not in guessed for c in s]), words))
+
+        
 
 
